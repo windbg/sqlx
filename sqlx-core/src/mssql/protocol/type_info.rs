@@ -484,6 +484,7 @@ impl TypeInfo {
 
     pub(crate) fn name(&self) -> &'static str {
         match self.ty {
+            DataType::DateTime => "DATETIME",
             DataType::Null => "NULL",
             DataType::TinyInt => "TINYINT",
             DataType::SmallInt => "SMALLINT",
