@@ -484,7 +484,6 @@ impl TypeInfo {
 
     pub(crate) fn name(&self) -> &'static str {
         match self.ty {
-            DataType::DateTime => "DATETIME",
             DataType::Null => "NULL",
             DataType::TinyInt => "TINYINT",
             DataType::SmallInt => "SMALLINT",
@@ -516,13 +515,17 @@ impl TypeInfo {
             DataType::BigChar => "BIGCHAR",
             DataType::NChar => "NCHAR",
 
+            DataType::DateTime2N => "DATETIME2",
+            DataType::DateTimeN => "DATETIME",
+            DataType::DateTime => "DATETIME",
+            DataType::DateN => "DATE",
+
             _ => unimplemented!("name: unsupported data type {:?}", self.ty),
         }
     }
 
     pub(crate) fn fmt(&self, s: &mut String) {
         match self.ty {
-            DataType::DateTime => s.push_str("datetime"),
             DataType::Null => s.push_str("nvarchar(1)"),
             DataType::TinyInt => s.push_str("tinyint"),
             DataType::SmallInt => s.push_str("smallint"),
@@ -531,6 +534,11 @@ impl TypeInfo {
             DataType::Real => s.push_str("real"),
             DataType::Float => s.push_str("float"),
             DataType::Bit => s.push_str("bit"),
+
+            DataType::DateN => s.push_str("date"),
+            DataType::DateTime2N => s.push_str("datetime2"),
+            DataType::DateTimeN => s.push_str("datetime"),
+            DataType::DateTime => s.push_str("datetime"),
 
             DataType::IntN => s.push_str(match self.size {
                 1 => "tinyint",

@@ -10,6 +10,7 @@ impl_database_ext! {
         f32,
         f64,
         String,
+        sqlx::types::chrono::NaiveDateTime,
     },
     ParamChecking::Weak,
     feature-types: _info => None,
