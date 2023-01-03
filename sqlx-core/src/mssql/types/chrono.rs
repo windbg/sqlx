@@ -9,7 +9,7 @@ use crate::{
     types::Type,
 };
 use byteorder::{ByteOrder, LittleEndian};
-use chrono::{NaiveDate, NaiveDateTime, NaiveTime};
+use chrono::{DateTime, Duration, Local, NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 
 impl Type<Mssql> for NaiveTime {
     fn type_info() -> MssqlTypeInfo {
